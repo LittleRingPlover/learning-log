@@ -1,0 +1,22 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block page_header %}
+ <h2> Twoje tematy </h2> 
+{% endblock page_header %}
+
+{% block content %}
+<a class="btn btn-primary mb-3" href="{% url 'learning_logs:new_topic' %}" role="button">Dodaj nowy temat &raquo;</a>
+
+  {% for topic in topics %}
+  <div class="card mb-3 bg-dark text-light text-opacity-75">
+    <h4 class="card-header">
+      <p><a href="{% url 'learning_logs:topic' topic.id %}" class="text-decoration-none link-light"> {{ topic }} </a></p>
+      <em><h6><a style='float:right;' href="{% url 'learning_logs:delete_topic' topic.id %}" class="text-decoration-none">Usuń temat</a></h6></em>
+    </h4>
+  </div>
+  {% empty %}
+    <h3>Nie został jeszcze dodany żaden temat.</h3>
+  {% endfor %}
+  </div>
+</div> 
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends 'learning_logs/base.html' %}
+{% load bootstrap5 %}
+
+{% block page_header %}
+<div class="text-light">
+  <h2>{{ topic }}</h2>
+</div>
+{% endblock page_header %}
+
+{% block content %}
+<a class="btn btn-primary mb-3" href="{% url 'learning_logs:new_entry' topic.id %}" role="button">Dodaj nowy wpis &raquo;</a>
+<a style='float:left;' class="btn btn-primary mb-3 me-2" href="{% url 'learning_logs:topics' %}" role="button">&laquo; Powrót do tematów</a>
+
+{% for entry in entries %}
+<div class="card mb-3 bg-dark text-light text-opacity-75">
+  <h4 class="card-header">
+    <p>{{ entry.date_added|date:'d M Y H:i' }}</p>
+    <em><h6><a style='float:left;' href="{% url 'learning_logs:edit_entry' entry.id %}" class="text-decoration-none">Edytuj wpis</a></h6></em>
+    <em><h6><a style='float:right;' href="{% url 'learning_logs:delete_entry' entry.id %}" class="text-decoration-none">Usuń wpis</a></h6></em>
+  </h4>
+  <div class="card-body">
+    {{ entry.text|linebreaks }}
+  </div>
+</div>
+{% empty %}
+<p>Nie ma jeszcze żadnego wpisu dla tego tematu.</p>
+{% endfor %}
+{% endblock content %}
+
