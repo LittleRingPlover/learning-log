@@ -14,5 +14,4 @@ The registered user can *add* new topics and new entries related to the topics, 
 - **Registration** (function-based view in "users" app: *register*),
 - **Login** (Django built-in authentication system),
 - **CRUD operations** (function-based views in "learning_logs" app: *new_topic*, *new_entry*, *topic*, *topics*, *edit_entry*, *delete_topic*, *delete_entry*),
-- **Two Django models** (classes: *Topic*, *Entry*),
 - **All templates modified with Bootstrap 5**.
